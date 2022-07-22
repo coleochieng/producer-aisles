@@ -4,12 +4,12 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../server');
 var debug = require('debug')('producer-aisles:server');
 var http = require('http');
 
 /**
- * Get port from environment and store in Express.
+ * Get port from environment and store in Express. Good job
  */
 
 var port = normalizePort(process.env.PORT || '3000');
