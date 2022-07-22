@@ -37,6 +37,8 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+//step 14 was to check line 37
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use('/', indexRouter);
