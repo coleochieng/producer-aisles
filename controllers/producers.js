@@ -1,26 +1,53 @@
 const Producer = require('../models/producer');
 
 module.exports = {
-    //function names
-    new: newProducer,
-    create,
-    index,
-    show,
+  index,
+  // show,
+  new: newProducer,
+  // create
 };
 
-//functions
+function index(req, res) {
+  Movie.find({}, function(err, movies) {
+    res.render('movies/index', { title: 'All Movies', movies });
+  });
+}
 
-function create(req, res) {
-    const producer = new Producer(req.body);
-    // Assign the logged in user's id
-    req.body.user = req.user._id;
-    req.body.userName = req.user.name;
-    req.body.userAvatar = req.user.avatar;
+// function show(req, res) {
+//   Movie.findById(req.params.id)
+//     .populate('cast')
+//     .exec(function(err, movie) {
+//       Performer.find(
+//         {_id: {$nin: movie.cast}},
+//         function(err, performers) {
+//           res.render('movies/show', {
+//             title: 'Movie Detail',
+//             movie,
+//             performers
+//           });
+//         }
+//       );
+//     });
+// }
 
-    producer.save(function(err) {
-      if (err) return res.redirect('/producers/new');
-      // Probably want to go to newly added producer's show view
-      res.redirect(`/producers/${producer._id}`);
-    });
-  }
-  
+function newProducer(req, res) {
+  res.render('producers/new', { title: 'Add Producer' });
+}
+
+// function create(req, res) {
+//   // convert nowShowing's checkbox of nothing or "on" to boolean
+//   req.body.nowShowing = !!req.body.nowShowing;
+//   // remove whitespace next to commas
+//   req.body.cast = req.body.cast.replace(/\s*,\s*/g, ',');
+//   // split if it's not an empty string
+//   if (req.body.cast) req.body.cast = req.body.cast.split(',');
+//   for (let key in req.body) {
+//     if (req.body[key] === '') delete req.body[key];
+//   }
+  var producer = new Producer(req.body);
+  producer.save(function(err) {
+    // one way to handle errors
+    if (err) return res.redirect('/producers/new');
+    res.redirect(`/producers/${producer._id}`);
+  });
+}

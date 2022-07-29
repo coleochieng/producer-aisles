@@ -7,9 +7,9 @@ const isLoggedIn = require('../config/auth');
 
 router.get('/', producersCtrl.index);
 // GET /producers/new (new functionality)
-router.get('/new', isLoggedIn, producersCtrl.new);
+//router.get('/new', isLoggedIn, producersCtrl.new);
 // GET /producers/:id (show functionality)
-router.get('/:id', producersCtrl.show);
+//router.get('/:id', producersCtrl.show);
 // POST /producers (create functionality)
 router.post('/', isLoggedIn, producersCtrl.create);
 
