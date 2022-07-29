@@ -1,16 +1,17 @@
 var express = require('express');
 var router = express.Router();
-const producersCtrl = require('../controllers/producers');
+const moviesCtrl = require('../controllers/movies');
 const isLoggedIn = require('../config/auth');
 
-// All routes "start with" /producer (from server.js)
+// All routes "start with" /movies (from server.js)
 
-router.get('/', producersCtrl.index);
-// GET /producers/new (new functionality)
-//router.get('/new', isLoggedIn, producersCtrl.new);
-// GET /producers/:id (show functionality)
-//router.get('/:id', producersCtrl.show);
-// POST /producers (create functionality)
-router.post('/', isLoggedIn, producersCtrl.create);
+// GET /movies (index functionality)
+router.get('/', moviesCtrl.index);
+// GET /movies/new (new functionality)
+router.get('/new', isLoggedIn, moviesCtrl.new);
+// GET /movies/:id (show functionality)
+router.get('/:id', moviesCtrl.show);
+// POST /movies (create functionality)
+router.post('/', isLoggedIn, moviesCtrl.create);
 
 module.exports = router;
