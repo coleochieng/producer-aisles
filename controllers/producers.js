@@ -50,4 +50,4 @@ function newProducer(req, res) {
     if (err) return res.redirect('/producers/new');
     res.redirect(`/producers/${producer._id}`);
   });
-}
+

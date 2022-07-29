@@ -24,10 +24,7 @@ const producerSchema = new Schema({
     userAvatar: String
 });
 
-
-
-
-    
+  
 
 
 module.exports = mongoose.model('Producers', producerSchema);

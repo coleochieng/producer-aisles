@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 
-/* GET home page. */
+// Don't want a welcome/home page in this app
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('/producers');
 });
 
 // Google OAuth login route
@@ -12,8 +12,8 @@ router.get('/auth/google', passport.authenticate(
   'google',
   {
     scope: ['profile', 'email'],
-    // Optionally force pick account every time
-    prompt: "select_account"
+    // Optionally force the user to pick account every time
+    prompt: 'select_account'
   }
 ));
 
@@ -21,18 +21,16 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/',
-    failureRedirect: '/'
+    successRedirect: '/producers',
+    failureRedirect: '/producers'
   }
 ));
 
-// OAuth logout route
-router.get('/logout', function(req, res){
-  req.logout(function(err){
-    res.redirect('/');
+// Logout route
+router.get('/logout', function(req, res) {
+  req.logout(function(err) {
+    res.redirect('/producers');
   });
 });
-
-
 
 module.exports = router;
