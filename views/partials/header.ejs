@@ -11,14 +11,14 @@
     <header>
         <nav>
                     <img src="/images/camera.svg">
-        <a href="/" <%- title === 'All Producers' ? 'class="active"' : '' %>>ALL PRODUCERS</a>
+        <a href="/" <%- title === 'All Producers' ? 'class="active"' : '' %>>all producers</a>
         <% if (user) { %>
             <a href="/producers/new"	<%- title === 'Add Producer' ? 'class="active"' : '' %>>
-                ADD PRODUCER</a>
-            <a href="/reviews/new" <%- title === 'Add Song' ? 'class="active"' : '' %>>ADD REVIEW</a>
-            <a href="/logout">LOG OUT</a>
+                add producer</a>
+            <a href="/reviews/new" <%- title === 'Add Song' ? 'class="active"' : '' %>>add review</a>
+            <a href="/logout">log out</a>
         <% } else { %>
-            <a href="/auth/google" class="login">LOG IN&nbsp;<img class = "googlesign" src="https://i.imgur.com/FHjYyi0.png"></a>
+            <a href="/auth/google" class="login">login (with gmail)&nbsp;</a>
         <% } %>
         
         </nav> 
