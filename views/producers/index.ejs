@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<table id="list">
+  <thead>
+    <tr>
+      <th>stage name</th>
+      <th>song title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% producers.forEach(function(p) { %>
+      <tr>
+        <td><%= p.stageName %></td>
+        <td><%= p.songTitle %></td>
+        <td><a href="/producers/<%= p._id %>">DETAILS</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+<%- include('../partials/footer') %>

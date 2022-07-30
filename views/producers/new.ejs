@@ -1,5 +1,14 @@
 <%- include('../partials/header') %>
 
-
+<form id="new-form" action="/producers" method="POST">
+  <label>Stage Name:</label>
+  <input type="text" name="stageName">
+  <label>Song Title:</label>
+  <input type="text" name="songTitle">
+  
+  <label>Producer(s) (separate producers with commas):</label>
+  <input type="text" name="producers">
+  <input type="submit" value="add producer">
+</form>
 
 <%- include('../partials/footer') %>
