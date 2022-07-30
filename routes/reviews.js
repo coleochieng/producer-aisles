@@ -4,7 +4,7 @@ const reviewsCtrl = require('../controllers/reviews');
 
 // The starts with path is '/'
 
-// POST /movies/:id/reviews
+// POST /producers/:id/reviews
 router.post('/producers/:id/reviews', reviewsCtrl.create);
 // DELETE /reviews/:id
 router.delete('/reviews/:id', reviewsCtrl.delete);

@@ -5,13 +5,13 @@ const isLoggedIn = require('../config/auth');
 
 // All routes "start with" /movies (from server.js)
 
-// GET /movies (index functionality)
+// GET /producers (index functionality)
 router.get('/', producersCtrl.index);
-// GET /movies/new (new functionality)
+// GET /producers/new (new functionality)
 router.get('/new', isLoggedIn, producersCtrl.new);
-// GET /movies/:id (show functionality)
+// GET /producers/:id (show functionality)
 router.get('/:id', producersCtrl.show);
-// POST /movies (create functionality)
+// POST /producers (create functionality)
 router.post('/', isLoggedIn, producersCtrl.create);
 
 module.exports = router;

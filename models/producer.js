@@ -27,4 +27,4 @@ const producerSchema = new Schema({
   
 
 
-module.exports = mongoose.model('Producers', producerSchema);
+module.exports = mongoose.model('Producer', producerSchema);
