@@ -1,53 +1,43 @@
 const Producer = require('../models/producer');
+const Movie = require('../models/song');
 
 module.exports = {
-  index,
-  // show,
   new: newProducer,
-  // create
+  create,
+  addToProducerList
 };
 
-function index(req, res) {
-  Movie.find({}, function(err, movies) {
-    res.render('movies/index', { title: 'All Movies', movies });
+function addToProducerList(req, res) {
+  Song.findById(req.params.id, function(err, song) {
+    song.cast.push(req.body.producerId);
+    song.save(function(err) {
+      res.redirect(`/songs/${song._id}`);
+    });
   });
 }
 
-// function show(req, res) {
-//   Movie.findById(req.params.id)
-//     .populate('cast')
-//     .exec(function(err, movie) {
-//       Performer.find(
-//         {_id: {$nin: movie.cast}},
-//         function(err, performers) {
-//           res.render('movies/show', {
-//             title: 'Movie Detail',
-//             movie,
-//             performers
-//           });
-//         }
-//       );
-//     });
-// }
+function create(req, res) {
+  // Need to "fix" date formatting to prevent day off by 1
+  // This is due to the <input type="date"> returning the date
+  // string in this format:  "YYYY-MM-DD"
+  // https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
+  const s = req.body.born;
+  req.body.born = `${s.substr(5, 2)}-${s.substr(8, 2)}-${s.substr(0, 4)}`;
+  // Alternative solution
+  // req.body.born = req.body.born + 'T00:00';
+  Producer.create(req.body, function (err, producer) {
+    res.redirect('/producers/new');
+  });
+}
 
 function newProducer(req, res) {
-  res.render('producers/new', { title: 'Add Producer' });
-}
-
-// function create(req, res) {
-//   // convert nowShowing's checkbox of nothing or "on" to boolean
-//   req.body.nowShowing = !!req.body.nowShowing;
-//   // remove whitespace next to commas
-//   req.body.cast = req.body.cast.replace(/\s*,\s*/g, ',');
-//   // split if it's not an empty string
-//   if (req.body.cast) req.body.cast = req.body.cast.split(',');
-//   for (let key in req.body) {
-//     if (req.body[key] === '') delete req.body[key];
-//   }
-  var producer = new Producer(req.body);
-  producer.save(function(err) {
-    // one way to handle errors
-    if (err) return res.redirect('/producers/new');
-    res.redirect(`/producers/${producer._id}`);
+  Producer.find({})
+  //Sort performers by their name
+  .sort('name')
+  .exec(function (err, producers) {
+    res.render('producers/new', {
+      title: 'Add Producer',
+      producers
+    });
   });
-
+}

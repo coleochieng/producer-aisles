@@ -9,13 +9,16 @@
   <div><%= movie.mpaaRating %></div>
   <div>Now Showing: </div>
   <div><%= movie.nowShowing ? 'Yes' : 'Nope' %></div>
-  <div>Cast:</div>
+  <div>producers:</div>
   <ul>
-    <%- movie.cast.map(p => 
+    <%- producer.cast.map(p => 
       `<li>${p.name} <small>${p.born.toLocaleDateString()}</small></li>`
     ).join('') %>
   </ul>
 </section>
+
+
+<!-- start checking again here -->
 <form id="add-per-to-cast" action="/movies/<%= movie._id %>/performers" method="POST">
   <select name="performerId">
     <%- performers.map(p => 
