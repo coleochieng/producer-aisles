@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const moviesCtrl = require('../controllers/songs');
+const songsCtrl = require('../controllers/songs');
 const isLoggedIn = require('../config/auth');
 
 // All routes "start with" /songs (from server.js)
