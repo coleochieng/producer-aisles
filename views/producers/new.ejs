@@ -1,13 +1,13 @@
 <%- include('../partials/header') %>
 
-<div>Before adding, remember to be kind. Hateful comments will be deleted.</div>
+<div>Name:</div>
 <section id="badge-container">
   <% producers.forEach(function(p) { %>
     <article class="badge"><%= p.name %></article>
   <% }) %>
 </section>
 
-<form id="add-performer-form" action="/performers" method="POST">
+<form id="add-producer-form" action="/producers" method="POST">
   <label>Review:</label>
   <input type="text" name="name">
   <input type="submit" value="Add Producer">
