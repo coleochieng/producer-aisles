@@ -10,12 +10,14 @@
 <body>
     <header>
         <nav>
-                    <img src="/images/camera.svg">
+                    <!-- <img src="/images/camera.svg"> -->
+        <a href="/" <%- title === 'All Songs' ? 'class="active"' : '' %>>all songs</a>
         <a href="/" <%- title === 'All Producers' ? 'class="active"' : '' %>>all producers</a>
         <% if (user) { %>
+            <a href="/songs/new" <%- title === 'Add Song' ? 'class="active"' : '' %>>add song</a>
             <a href="/producers/new"	<%- title === 'Add Producer' ? 'class="active"' : '' %>>
                 add producer</a>
-            <a href="/reviews/new" <%- title === 'Add Song' ? 'class="active"' : '' %>>add review</a>
+            <a href="/reviews/new" <%- title === 'Add Review' ? 'class="active"' : '' %>>add review</a>
             <a href="/logout">log out</a>
         <% } else { %>
             <a href="/auth/google" class="login">login (with gmail)&nbsp;</a>
