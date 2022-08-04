@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const performersCtrl = require('../controllers/performers');
+const performersCtrl = require('../controllers/producers');
 
 // This router is mounted to a "starts with" path of '/'
 
