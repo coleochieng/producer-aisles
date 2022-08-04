@@ -1,5 +1,5 @@
 const Producer = require('../models/producer');
-const Movie = require('../models/song');
+const Song = require('../models/song');
 
 module.exports = {
   new: newProducer,
@@ -32,7 +32,7 @@ function create(req, res) {
 
 function newProducer(req, res) {
   Producer.find({})
-  //Sort performers by their name
+  //Sort producers by their name
   .sort('name')
   .exec(function (err, producers) {
     res.render('producers/new', {

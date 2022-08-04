@@ -1,4 +1,4 @@
-const Movie = require('../models/song');
+const Song = require('../models/song');
 
 module.exports = {
   create,
@@ -19,7 +19,7 @@ async function deleteReview(req, res, next) {
 }
 
 function create(req, res) {
-  // The new review will be embedded in the movie doc
+  // The new review will be embedded in the song doc
   Song.findById(req.params.id, function(err, song) {
     // Mongoose arrays have everything that JS arrays
     // have, and more!
