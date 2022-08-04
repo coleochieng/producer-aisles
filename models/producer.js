@@ -1,30 +1,12 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
-
-const reviewSchema = new Schema({
-  content: {
-    type: String,
-  },
-  user: {type: Schema.Types.ObjectId, ref: 'User'},
-  userName: String,
-  userAvatar: String
-}); 
-
 const producerSchema = new Schema({
-  name: String,
-  recordLabels: String,
-  numberOfGrammyNominations: Number,
-  songsListed: Number,
-  image: String,
-  reviews: [reviewSchema],
-  user: {type: Schema.Types.ObjectId, ref: 'User'},
-    userName: String,
-    userAvatar: String
+  name: {type: String, required: true, unique: true},
+  //account for this feature with MCV/R module edits for producerSchema.spotify
+  //spotify: {type: URL, required: true, unique: true}
+}, {
+  timestamps: true
 });
-
-  
-
 
 module.exports = mongoose.model('Producer', producerSchema);
