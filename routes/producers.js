@@ -1,17 +1,14 @@
-var express = require('express');
-var router = express.Router();
-//const producersCtrl = require('../controllers/producers');
-const isLoggedIn = require('../config/auth');
+const express = require('express');
+const router = express.Router();
+const performersCtrl = require('../controllers/performers');
 
-// All routes "start with" /movies (from server.js)
+// This router is mounted to a "starts with" path of '/'
 
-// GET /producers (index functionality)
-router.get('/', producersCtrl.index);
-// GET /producers/new (new functionality)
-router.get('/new', isLoggedIn, producersCtrl.new);
-// GET /producers/:id (show functionality)
-router.get('/:id', producersCtrl.show);
-// POST /producers (create functionality)
-router.post('/', isLoggedIn, producersCtrl.create);
+// GET /performers/new
+router.get('/performers/new', performersCtrl.new);
+// POST /performers
+router.post('/performers', performersCtrl.create);
+// POST /movies/:id/performers
+router.post('/producers/:id/performers', performersCtrl.addToProducerList);
 
 module.exports = router;
