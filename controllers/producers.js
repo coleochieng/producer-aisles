@@ -9,7 +9,7 @@ module.exports = {
 
 function addToProducerList(req, res) {
   Song.findById(req.params.id, function(err, song) {
-    song.cast.push(req.body.producerId);
+    song.producerCast.push(req.body.producerId);
     song.save(function(err) {
       res.redirect(`/songs/${song._id}`);
     });
