@@ -4,11 +4,11 @@ const performersCtrl = require('../controllers/producers');
 
 // This router is mounted to a "starts with" path of '/'
 
-// GET /performers/new
-router.get('/performers/new', performersCtrl.new);
-// POST /performers
-router.post('/performers', performersCtrl.create);
-// POST /movies/:id/performers
-router.post('/producers/:id/performers', performersCtrl.addToProducerList);
+// GET /producers/new
+router.get('/producers/new', performersCtrl.new);
+// POST /producers
+router.post('/producers', performersCtrl.create);
+// POST /movies/:id/producers
+router.post('/producers/:id/producers', performersCtrl.addToProducerList);
 
 module.exports = router;
