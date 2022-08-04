@@ -1,14 +1,16 @@
 <%- include('../partials/header') %>
 
-<form id="new-form" action="/producers" method="POST">
-  <label>stage name:</label>
-  <input type="text" name="stageName">
-  <label>song title:</label>
-  <input type="text" name="songTitle">
-  
-  <label>producer(s) (separate multiple producers with commas):</label>
-  <input type="text" name="producers">
-  <input type="submit" value="add producer">
+<div>Before adding, please ensure that the Producer is not in the following list:</div>
+<section id="badge-container">
+  <% producers.forEach(function(p) { %>
+    <article class="badge"><%= p.name %></article>
+  <% }) %>
+</section>
+
+<form id="add-performer-form" action="/performers" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name">
+  <input type="submit" value="Add Producer">
 </form>
 
 <%- include('../partials/footer') %>
